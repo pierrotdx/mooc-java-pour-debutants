@@ -1,11 +1,13 @@
 public class HelloUniverse {
 
     public static void main(String... args) {
-        short year = 2006;
+        short year = 2007;
         short thresholdYear = 2006;
-        short nbPlanetes = 9;
+        short nbPlanetes;
 
-        if (year >= thresholdYear) {
+        if (year < thresholdYear) {
+            nbPlanetes = 9;
+        } else {
             nbPlanetes = 8;
         }
 
