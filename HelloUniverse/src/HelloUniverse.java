@@ -1,15 +1,15 @@
 public class HelloUniverse {
 
-    public static void main(String... args){
-        short nbPlanetes = 8;
-        String text = "Aux dernières nouvelles, le nombre total de planètes dans le système solaire est de : " + nbPlanetes;
+    public static void main(String... args) {
+        short year = 2006;
+        short thresholdYear = 2006;
+        short nbPlanetes = 9;
 
-        System.out.println(text);
+        if (year >= thresholdYear) {
+            nbPlanetes = 8;
+        }
 
-        nbPlanetes++;
-        text = "Il y a quelques années cependant, elles étaient au nombre de : " + nbPlanetes;
-
-        System.out.println(text);
+        System.out.printf("En %d, les planètes du système solaire étaient au nombre de : %d", year, nbPlanetes);
     }
 
 }
