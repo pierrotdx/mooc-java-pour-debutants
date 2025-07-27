@@ -1,7 +1,8 @@
 public class HelloUniverse {
 
     public static void main(String... args) {
-        for (int nbPlanetes = 7; nbPlanetes < 11; nbPlanetes++) {
+        short nbPlanetes = 7;
+         while (nbPlanetes < 11) {
             switch (nbPlanetes) {
                 case 7:
                     System.out.println("On sait qu'au 16ème siècle, seules 7 planètes avaient été découvertes");
@@ -15,6 +16,7 @@ public class HelloUniverse {
                 default:
                     System.out.printf("Le programme ne peut pas fournir de résultat pour %d", nbPlanetes);
             }
+             nbPlanetes++;
         }
     }
 }
