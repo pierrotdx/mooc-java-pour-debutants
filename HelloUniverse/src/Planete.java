@@ -1,15 +1,20 @@
 public class Planete {
+    static String forme = "Sphérique";
+    static int nbPlanetesDecouvertes;
+
     String nom;
     String matiere;
     long diametre;
     int totalVisiteurs;
     Atmosphere atmosphere = new Atmosphere();
     Vaisseau vaisseau;
-    static String forme = "Sphérique";
-    static int nbPlanetesDecouvertes;
 
     Planete() {
         nbPlanetesDecouvertes++;
+    }
+
+    static String expansion(double distanceEnMdsKm) {
+        return  distanceEnMdsKm < 14 ? "Oh la la mais c'est super rapide !" : "Je rêve ou c'est plus rapide que la lumière ?";
     }
 
     int revolution(int angle) {
@@ -48,9 +53,5 @@ public class Planete {
         System.out.printf("A %,.1f%% d'hélium\n", this.atmosphere.tauxHelium);
         System.out.printf("A %,.1f%% de méthane\n", this.atmosphere.tauxMethane);
         System.out.printf("A %,.1f%% de sodium\n", this.atmosphere.tauxSodium);
-    }
-
-    static String expansion(double distanceEnMdsKm) {
-            return  distanceEnMdsKm < 14 ? "Oh la la mais c'est super rapide !" : "Je rêve ou c'est plus rapide que la lumière ?";
     }
 }
