@@ -36,12 +36,16 @@ public class Planete {
 
     void displayAthmosphere() {
         System.out.printf("L'athmosphère de %s est composée :\n", this.nom);
-        System.out.printf("A %,.1f%% d'hydrogène\n", this.atmosphere.hydrogene);
-        System.out.printf("A %,.1f%% d'argon\n", this.atmosphere.argon);
-        System.out.printf("A %,.1f%% de dioxyde de carbone\n", this.atmosphere.dioxydeDeCarbone);
-        System.out.printf("A %,.1f%% d'azote\n", this.atmosphere.azote);
-        System.out.printf("A %,.1f%% d'hélium\n", this.atmosphere.helium);
-        System.out.printf("A %,.1f%% de méthane\n", this.atmosphere.methane);
-        System.out.printf("A %,.1f%% de sodium\n", this.atmosphere.sodium);
+        System.out.printf("A %,.1f%% d'hydrogène\n", this.atmosphere.tauxHydrogene);
+        System.out.printf("A %,.1f%% d'argon\n", this.atmosphere.tauxArgon);
+        System.out.printf("A %,.1f%% de dioxyde de carbone\n", this.atmosphere.tauxDioxydeDeCarbone);
+        System.out.printf("A %,.1f%% d'azote\n", this.atmosphere.tauxAzote);
+        System.out.printf("A %,.1f%% d'hélium\n", this.atmosphere.tauxHelium);
+        System.out.printf("A %,.1f%% de méthane\n", this.atmosphere.tauxMethane);
+        System.out.printf("A %,.1f%% de sodium\n", this.atmosphere.tauxSodium);
+    }
+
+    static String expansion(double distanceEnMdsKm) {
+            return  distanceEnMdsKm < 14 ? "Oh la la mais c'est super rapide !" : "Je rêve ou c'est plus rapide que la lumière ?";
     }
 }

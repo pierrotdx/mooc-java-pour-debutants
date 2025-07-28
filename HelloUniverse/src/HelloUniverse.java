@@ -34,9 +34,9 @@ public class HelloUniverse {
         uranus.nom = "Uranus";
         uranus.matiere = "gazeuse";
         uranus.diametre = 51118;
-        uranus.atmosphere.hydrogene = 83f;
-        uranus.atmosphere.helium = 15f;
-        uranus.atmosphere.methane = 2.5f;
+        uranus.atmosphere.tauxHydrogene = 83f;
+        uranus.atmosphere.tauxHelium= 15f;
+        uranus.atmosphere.tauxMethane = 2.5f;
 
         Planete neptune = new Planete();
         neptune.nom = "Neptune";
@@ -47,7 +47,11 @@ public class HelloUniverse {
 
         Planete planeteCourante = mars;
 
-        System.out.printf("La forme d'une planète est : %s.\n", Planete.forme);
-        System.out.printf("La forme de %s est : %s.\n", planeteCourante.nom, planeteCourante.forme);
+
+        String expansion = Planete.expansion(10.5);
+        System.out.println(expansion);
+        expansion = Planete.expansion(14.2);
+        System.out.println(expansion);
+
     }
 }
