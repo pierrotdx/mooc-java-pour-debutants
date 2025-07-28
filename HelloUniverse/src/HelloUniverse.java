@@ -42,7 +42,8 @@ public class HelloUniverse {
 
         Planete planeteNeuf = new Planete();
 
-        neptune.revolution();
-        mars.rotation();
+        neptune.revolution(-3542);
+        mars.rotation(-684);
+        venus.rotation(1250);
     }
 }

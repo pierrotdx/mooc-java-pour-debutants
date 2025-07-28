@@ -3,11 +3,15 @@ public class Planete {
     String matiere;
     long diametre;
 
-    void revolution() {
-        System.out.printf("Je suis la planète %s et je tourne autour de mon étoile.", nom);
+    int revolution(int angle) {
+        int nbToursComplets = angle / 360;
+        System.out.printf("%s a effectué %d tours complets autour de son étoile.", nom, nbToursComplets);
+        return nbToursComplets;
     }
 
-    void rotation() {
-        System.out.printf("Je suis la planète %s et je tourne sur moi-même", nom);
+    int rotation(int angle) {
+        int nbToursComplets = angle / 360;
+        System.out.printf("%s a effectué %d tours complets sur elle-même.", nom, nbToursComplets);
+        return nbToursComplets;
     }
 }
