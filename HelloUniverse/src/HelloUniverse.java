@@ -42,8 +42,13 @@ public class HelloUniverse {
 
         Planete planeteNeuf = new Planete();
 
-        neptune.revolution(-3542);
-        mars.rotation(-684);
-        venus.rotation(1250);
+
+        Planete planeteCourante = mars;
+
+        planeteCourante.accueillirVaisseau(8);
+        planeteCourante.accueillirVaisseau("FREGATE");
+
+        System.out.printf("Le nombre d'humains ayant déjà séjourné sur %s est actuellement de %d.", planeteCourante.nom, planeteCourante.totalVisiteurs);
+
     }
 }
