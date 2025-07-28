@@ -42,7 +42,7 @@ public class HelloUniverse {
 
         Planete planeteNeuf = new Planete();
 
-        Planete currentPlanet = planeteNeuf;
-        System.out.printf("%s est une planète %s avec un diamètre de %d kilomètres.", currentPlanet.nom, currentPlanet.matiere, currentPlanet.diametre);
+        neptune.revolution();
+        mars.rotation();
     }
 }
