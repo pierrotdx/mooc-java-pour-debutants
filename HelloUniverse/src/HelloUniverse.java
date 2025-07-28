@@ -34,6 +34,9 @@ public class HelloUniverse {
         uranus.nom = "Uranus";
         uranus.matiere = "gazeuse";
         uranus.diametre = 51118;
+        uranus.atmosphere.hydrogene = 83f;
+        uranus.atmosphere.helium = 15f;
+        uranus.atmosphere.methane = 2.5f;
 
         Planete neptune = new Planete();
         neptune.nom = "Neptune";
@@ -42,13 +45,8 @@ public class HelloUniverse {
 
         Planete planeteNeuf = new Planete();
 
+        Planete planeteCourante = uranus;
 
-        Planete planeteCourante = mars;
-
-        planeteCourante.accueillirVaisseau(8);
-        planeteCourante.accueillirVaisseau("FREGATE");
-
-        System.out.printf("Le nombre d'humains ayant déjà séjourné sur %s est actuellement de %d.", planeteCourante.nom, planeteCourante.totalVisiteurs);
-
+        planeteCourante.displayAthmosphere();
     }
 }
