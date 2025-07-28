@@ -6,6 +6,11 @@ public class Planete {
     Atmosphere atmosphere = new Atmosphere();
     Vaisseau vaisseau;
     static String forme = "Sphérique";
+    static int nbPlanetesDecouvertes;
+
+    Planete() {
+        nbPlanetesDecouvertes++;
+    }
 
     int revolution(int angle) {
         int nbToursComplets = angle / 360;

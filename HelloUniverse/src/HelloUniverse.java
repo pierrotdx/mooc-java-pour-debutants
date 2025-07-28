@@ -43,15 +43,8 @@ public class HelloUniverse {
         neptune.matiere = "gazeuse";
         neptune.diametre = 49532;
 
-        Planete planeteNeuf = new Planete();
 
-        Planete planeteCourante = mars;
-
-
-        String expansion = Planete.expansion(10.5);
-        System.out.println(expansion);
-        expansion = Planete.expansion(14.2);
-        System.out.println(expansion);
+        System.out.println(Planete.nbPlanetesDecouvertes);
 
     }
 }
