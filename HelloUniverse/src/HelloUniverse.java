@@ -1,22 +1,45 @@
 public class HelloUniverse {
-
     public static void main(String... args) {
-        short nbPlanetes = 7;
-         while (nbPlanetes < 11) {
-            switch (nbPlanetes) {
-                case 7:
-                    System.out.println("On sait qu'au 16ème siècle, seules 7 planètes avaient été découvertes");
-                    break;
-                case 8:
-                    System.out.println("On sait que le nombre de planètes est passé de 7 à 8 au 17ème siècle, mais il a également été réduit de 9 à 8 en 2006");
-                    break;
-                case 9:
-                    System.out.println("On sait que le nombre de planètes est passé de 8 à 9 au 18ème siècle et ce jusqu'en 2006, où ce nombre a été réduit à 8");
-                    break;
-                default:
-                    System.out.printf("Le programme ne peut pas fournir de résultat pour %d", nbPlanetes);
-            }
-             nbPlanetes++;
-        }
+        Planete mercure = new Planete();
+        mercure.nom = "Mercure";
+        mercure.matiere = "tellurique";
+        mercure.diametre = 4880;
+
+        Planete venus = new Planete();
+        venus.nom = "Venus";
+        venus.matiere = "tellurique";
+        venus.diametre = 12100;
+
+        Planete terre = new Planete();
+        terre.nom = "Terre";
+        terre.matiere = "tellurique";
+        terre.diametre = 12756;
+
+        Planete mars = new Planete();
+        mars.nom = "Mars";
+        mars.matiere = "tellurique";
+        mars.diametre = 6792;
+
+        Planete jupiter = new Planete();
+        jupiter.nom = "Jupiter";
+        jupiter.matiere = "gazeuse";
+        jupiter.diametre = 142984;
+
+        Planete saturne = new Planete();
+        saturne.nom = "Saturne";
+        saturne.matiere = "gazeuse";
+        saturne.diametre = 120536;
+
+        Planete uranus = new Planete();
+        uranus.nom = "Uranus";
+        uranus.matiere = "gazeuse";
+        uranus.diametre = 51118;
+
+        Planete neptune = new Planete();
+        neptune.nom = "Neptune";
+        neptune.matiere = "gazeuse";
+        neptune.diametre = 49532;
+
+        System.out.printf("%s est une planète %s avec un diamètre de %d kilomètres.", jupiter.nom, jupiter.matiere, jupiter.diametre);
     }
 }
