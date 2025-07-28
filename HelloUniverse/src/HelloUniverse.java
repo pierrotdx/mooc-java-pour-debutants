@@ -47,15 +47,7 @@ public class HelloUniverse {
 
         Planete planeteCourante = mars;
 
-        Vaisseau premierVaisseau = new Vaisseau();
-        premierVaisseau.type = "FREGATE";
-        premierVaisseau.nbPassagers = 9;
-
-        Vaisseau deuxiemeVaisseau = new Vaisseau();
-        deuxiemeVaisseau.type = "CROISEUR";
-        deuxiemeVaisseau.nbPassagers = 42;
-
-        planeteCourante.accueillirVaisseau(premierVaisseau);
-        planeteCourante.accueillirVaisseau(deuxiemeVaisseau);
+        System.out.printf("La forme d'une planète est : %s.\n", Planete.forme);
+        System.out.printf("La forme de %s est : %s.\n", planeteCourante.nom, planeteCourante.forme);
     }
 }
