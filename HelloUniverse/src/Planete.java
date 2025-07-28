@@ -9,7 +9,8 @@ public class Planete {
     Atmosphere atmosphere = new Atmosphere();
     Vaisseau vaisseau;
 
-    Planete() {
+    Planete(String nom) {
+        this.nom = nom;
         nbPlanetesDecouvertes++;
     }
 
