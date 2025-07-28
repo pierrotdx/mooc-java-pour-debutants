@@ -45,8 +45,17 @@ public class HelloUniverse {
 
         Planete planeteNeuf = new Planete();
 
-        Planete planeteCourante = uranus;
+        Planete planeteCourante = mars;
 
-        planeteCourante.displayAthmosphere();
+        Vaisseau premierVaisseau = new Vaisseau();
+        premierVaisseau.type = "FREGATE";
+        premierVaisseau.nbPassagers = 9;
+
+        Vaisseau deuxiemeVaisseau = new Vaisseau();
+        deuxiemeVaisseau.type = "CROISEUR";
+        deuxiemeVaisseau.nbPassagers = 42;
+
+        planeteCourante.accueillirVaisseau(premierVaisseau);
+        planeteCourante.accueillirVaisseau(deuxiemeVaisseau);
     }
 }

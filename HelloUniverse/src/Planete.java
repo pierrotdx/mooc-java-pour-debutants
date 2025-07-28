@@ -4,6 +4,7 @@ public class Planete {
     long diametre;
     int totalVisiteurs;
     Atmosphere atmosphere = new Atmosphere();
+    Vaisseau vaisseau;
 
     int revolution(int angle) {
         int nbToursComplets = angle / 360;
@@ -17,19 +18,19 @@ public class Planete {
         return nbToursComplets;
     }
 
-    void accueillirVaisseau(int nbArrivants) {
-        totalVisiteurs += nbArrivants;
-    }
-
-    void accueillirVaisseau(String typeDeVaisseau) {
-        /* here we use `if` to force the use of the freshly-introduced `equals` method although `switch` would be cleaner */
-        if (typeDeVaisseau.equals("CHASSEUR")) {
-            totalVisiteurs += 3;
-        } else if (typeDeVaisseau.equals("FREGATE")) {
-            totalVisiteurs += 12;
-        } else if (typeDeVaisseau.equals("CROISEUR")) {
-            totalVisiteurs += 50;
+    Vaisseau accueillirVaisseau(Vaisseau vaisseau) {
+        Vaisseau vaisseauEnPartance = this.vaisseau;
+        if (vaisseauEnPartance == null) {
+            System.out.println("Aucun vaisseau ne s'en va.");
+        } else {
+            System.out.printf("Un vaisseau de type %s doit s'en aller.\n", vaisseauEnPartance.type);
         }
+        this.vaisseau = vaisseau;
+
+        this.totalVisiteurs += vaisseau.nbPassagers;
+        System.out.printf("Le nombre d'humains ayant déjà séjourné sur %s est actuellement de %d.\n", this.nom, this.totalVisiteurs);
+
+        return vaisseauEnPartance;
     }
 
     void displayAthmosphere() {
