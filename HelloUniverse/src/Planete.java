@@ -3,11 +3,8 @@ public class Planete {
     static int nbPlanetesDecouvertes;
 
     String nom;
-    String matiere;
     long diametre;
-    int totalVisiteurs;
     Atmosphere atmosphere = new Atmosphere();
-    Vaisseau vaisseau;
 
     Planete(String nom) {
         this.nom = nom;
@@ -28,21 +25,6 @@ public class Planete {
         int nbToursComplets = angle / 360;
         System.out.printf("%s a effectué %d tours complets sur elle-même.", nom, nbToursComplets);
         return nbToursComplets;
-    }
-
-    Vaisseau accueillirVaisseau(Vaisseau vaisseau) {
-        Vaisseau vaisseauEnPartance = this.vaisseau;
-        if (vaisseauEnPartance == null) {
-            System.out.println("Aucun vaisseau ne s'en va.");
-        } else {
-            System.out.printf("Un vaisseau de type %s doit s'en aller.\n", vaisseauEnPartance.type);
-        }
-        this.vaisseau = vaisseau;
-
-        this.totalVisiteurs += vaisseau.nbPassagers;
-        System.out.printf("Le nombre d'humains ayant déjà séjourné sur %s est actuellement de %d.\n", this.nom, this.totalVisiteurs);
-
-        return vaisseauEnPartance;
     }
 
     void displayAthmosphere() {

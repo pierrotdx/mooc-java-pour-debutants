@@ -1,39 +1,30 @@
 public class HelloUniverse {
     public static void main(String... args) {
-        Planete mercure = new Planete("Mercure");
-        mercure.matiere = "tellurique";
+        PlaneteTellurique mercure = new PlaneteTellurique("Mercure");
         mercure.diametre = 4880;
 
-        Planete venus = new Planete("Venus");
-        venus.matiere = "tellurique";
+        PlaneteTellurique venus = new PlaneteTellurique("Venus");
         venus.diametre = 12100;
 
-        Planete terre = new Planete("Terre");
-        terre.matiere = "tellurique";
+        PlaneteTellurique terre = new PlaneteTellurique("Terre");
         terre.diametre = 12756;
 
-        Planete mars = new Planete("Mars");
-        mars.matiere = "tellurique";
+        PlaneteTellurique mars = new PlaneteTellurique("Mars");
         mars.diametre = 6792;
 
-        Planete jupiter = new Planete("Jupiter");
-        jupiter.matiere = "gazeuse";
+        PlaneteGazeuse jupiter = new PlaneteGazeuse("Jupiter");
         jupiter.diametre = 142984;
 
-        Planete saturne = new Planete("Saturne");
-        saturne.matiere = "gazeuse";
+        PlaneteGazeuse saturne = new PlaneteGazeuse("Saturne");
         saturne.diametre = 120536;
 
-        Planete uranus = new Planete("Uranus");
-        uranus.matiere = "gazeuse";
+        PlaneteGazeuse uranus = new PlaneteGazeuse("Uranus");
         uranus.diametre = 51118;
         uranus.atmosphere.tauxHydrogene = 83f;
         uranus.atmosphere.tauxHelium= 15f;
         uranus.atmosphere.tauxMethane = 2.5f;
 
-        Planete neptune = new Planete("Neptune");
-
-        neptune.matiere = "gazeuse";
+        PlaneteGazeuse neptune = new PlaneteGazeuse("Neptune");
         neptune.diametre = 49532;
 
 
@@ -54,7 +45,8 @@ public class HelloUniverse {
         System.out.printf("La durée de protection résiduelle du bouclier du Vaisseau-Monde est de %d minutes.\n", vaisseauMonde.resistanceDuBouclier);
         System.out.printf("La valeur du blindage du Vaisseau-Monde est de %d.\n", vaisseauMonde.blindage);
 
-
+        mars.accueillirVaisseau(vaisseauMonde);
+        mars.accueillirVaisseau(chasseur);
 
     }
 }
