@@ -17,7 +17,7 @@ public class VaisseauDeGuerre extends Vaisseau {
 
     @Override
     void activerBouclier() {
-        System.out.printf("Activation du bouclier d'un vaisseau de type %s\n", this.type);
+        super.activerBouclier();
         this.desactiverArmes();
     }
 }
