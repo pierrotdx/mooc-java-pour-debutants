@@ -22,70 +22,14 @@ public class HelloUniverse {
 
         PlaneteGazeuse uranus = new PlaneteGazeuse("Uranus");
         uranus.diametre = 51118;
-        uranus.atmosphere.tauxHydrogene = 83f;
-        uranus.atmosphere.tauxHelium = 15f;
-        uranus.atmosphere.tauxMethane = 2.5f;
+        uranus.atmosphere.tauxHydrogene = new Float(83f);
+        uranus.atmosphere.tauxHelium = new Float(15f);
+        uranus.atmosphere.tauxMethane = new Float(2.5f);
+        uranus.atmosphere.tauxAzote = new Float(0);
 
         PlaneteGazeuse neptune = new PlaneteGazeuse("Neptune");
         neptune.diametre = 49532;
 
-        VaisseauDeGuerre chasseur = new VaisseauDeGuerre("CHASSEUR");
-        chasseur.nbPassagers = 4;
-        VaisseauDeGuerre fregate = new VaisseauDeGuerre("FREGATE");
-        fregate.nbPassagers = 9;
-        VaisseauDeGuerre croiseur = new VaisseauDeGuerre("CROISEUR");
-        croiseur.nbPassagers = 284;
-        VaisseauCivil cargo = new VaisseauCivil("CARGO");
-        cargo.nbPassagers = 938;
-        VaisseauCivil vaisseauMonde = new VaisseauCivil("VAISSEAU-MONDE");
-        vaisseauMonde.nbPassagers = 1;
-
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.println("Quel type de vaisseau voulez-vous manipuler ?");
-        String typeVaisseauChoisi = scanner.nextLine();
-        Vaisseau vaisseauChoisi;
-        switch (typeVaisseauChoisi) {
-            case "CHASSEUR":
-                vaisseauChoisi = chasseur;
-                break;
-            case "FREGATE":
-                vaisseauChoisi = fregate;
-                break;
-            case "CROISEUR":
-                vaisseauChoisi = croiseur;
-                break;
-            case "CARGO":
-                vaisseauChoisi = cargo;
-                break;
-            case "VAISSEAU-MONDE":
-            default:
-                vaisseauChoisi = chasseur;
-        }
-
-        System.out.println("Sur quelle planète voulez-vous vous rendre ?");
-        String nomDePlaneteChoisie = scanner.nextLine();
-        PlaneteTellurique planeteChoisie;
-        switch (nomDePlaneteChoisie) {
-            case "Mercure":
-                planeteChoisie = mercure;
-                break;
-            case "Venus":
-                planeteChoisie = venus;
-                break;
-            case "Terre":
-                planeteChoisie = terre;
-                break;
-            case "Mars":
-            default:
-                planeteChoisie = mars;
-        }
-        planeteChoisie.accueillirVaisseau(vaisseauChoisi);
-
-        System.out.println("Quel tonnage de livraison souhaitez-vous embarquer ?");
-        int tonnageChoisi = scanner.nextInt();
-
-        int tonnageRejete = vaisseauChoisi.emporterCargaison(tonnageChoisi);
-        System.out.printf("Le tonnage rejeté est %d.\n", tonnageRejete);
+        uranus.displayAthmosphere();
     }
 }

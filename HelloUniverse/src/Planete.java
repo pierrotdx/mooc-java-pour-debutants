@@ -12,7 +12,7 @@ public abstract class Planete {
     }
 
     static String expansion(double distanceEnMdsKm) {
-        return  distanceEnMdsKm < 14 ? "Oh la la mais c'est super rapide !" : "Je rêve ou c'est plus rapide que la lumière ?";
+        return distanceEnMdsKm < 14 ? "Oh la la mais c'est super rapide !" : "Je rêve ou c'est plus rapide que la lumière ?";
     }
 
     int revolution(int angle) {
@@ -29,12 +29,26 @@ public abstract class Planete {
 
     void displayAthmosphere() {
         System.out.printf("L'athmosphère de %s est composée :\n", this.nom);
-        System.out.printf("A %,.1f%% d'hydrogène\n", this.atmosphere.tauxHydrogene);
-        System.out.printf("A %,.1f%% d'argon\n", this.atmosphere.tauxArgon);
-        System.out.printf("A %,.1f%% de dioxyde de carbone\n", this.atmosphere.tauxDioxydeDeCarbone);
-        System.out.printf("A %,.1f%% d'azote\n", this.atmosphere.tauxAzote);
-        System.out.printf("A %,.1f%% d'hélium\n", this.atmosphere.tauxHelium);
-        System.out.printf("A %,.1f%% de méthane\n", this.atmosphere.tauxMethane);
-        System.out.printf("A %,.1f%% de sodium\n", this.atmosphere.tauxSodium);
+        if (this.atmosphere.tauxHydrogene != null) {
+            System.out.printf("A %,.1f%% d'hydrogène\n", this.atmosphere.tauxHydrogene);
+        }
+        if (this.atmosphere.tauxArgon != null) {
+            System.out.printf("A %,.1f%% d'argon\n", this.atmosphere.tauxArgon);
+        }
+        if (this.atmosphere.tauxDioxydeDeCarbone != null) {
+            System.out.printf("A %,.1f%% de dioxyde de carbone\n", this.atmosphere.tauxDioxydeDeCarbone);
+        }
+        if (this.atmosphere.tauxAzote != null) {
+            System.out.printf("A %,.1f%% d'azote\n", this.atmosphere.tauxAzote);
+        }
+        if (this.atmosphere.tauxHelium != null) {
+            System.out.printf("A %,.1f%% d'hélium\n", this.atmosphere.tauxHelium);
+        }
+        if (this.atmosphere.tauxMethane != null) {
+            System.out.printf("A %,.1f%% de méthane\n", this.atmosphere.tauxMethane);
+        }
+        if (this.atmosphere.tauxSodium != null) {
+            System.out.printf("A %,.1f%% de sodium\n", this.atmosphere.tauxSodium);
+        }
     }
 }
