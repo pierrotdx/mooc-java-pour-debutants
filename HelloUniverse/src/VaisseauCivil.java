@@ -1,5 +1,5 @@
 public class VaisseauCivil extends Vaisseau {
-    VaisseauCivil(String type) {
+    VaisseauCivil(TypeVaisseau type) {
         super(type);
     }
 

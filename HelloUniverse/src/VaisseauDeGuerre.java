@@ -1,7 +1,7 @@
 public class VaisseauDeGuerre extends Vaisseau {
     boolean armesDesactivees;
 
-    VaisseauDeGuerre(String type) {
+    VaisseauDeGuerre(TypeVaisseau type) {
         super(type);
     }
 

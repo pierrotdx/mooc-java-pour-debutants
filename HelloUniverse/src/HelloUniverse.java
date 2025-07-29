@@ -30,6 +30,67 @@ public class HelloUniverse {
         PlaneteGazeuse neptune = new PlaneteGazeuse("Neptune");
         neptune.diametre = 49532;
 
-        uranus.displayAthmosphere();
+        VaisseauDeGuerre chasseur = new VaisseauDeGuerre(TypeVaisseau.CHASSEUR);
+        chasseur.nbPassagers = 4;
+
+        VaisseauDeGuerre fregate = new VaisseauDeGuerre(TypeVaisseau.FREGATE);
+        fregate.nbPassagers = 9;
+
+        VaisseauDeGuerre croiseur = new VaisseauDeGuerre(TypeVaisseau.CROISEUR);
+        croiseur.nbPassagers = 284;
+
+        VaisseauCivil cargo = new VaisseauCivil(TypeVaisseau.CARGO);
+        cargo.nbPassagers = 938;
+
+        VaisseauCivil vaisseauMonde = new VaisseauCivil(TypeVaisseau.VAISSEAUMONDE);
+        vaisseauMonde.nbPassagers = 1;
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Quel type de vaisseau voulez-vous manipuler ?");
+        TypeVaisseau typeVaisseau = TypeVaisseau.valueOf(scanner.nextLine());
+        Vaisseau vaisseauChoisi;
+        switch (typeVaisseau) {
+            case CHASSEUR:
+                vaisseauChoisi = chasseur;
+                break;
+            case FREGATE:
+                vaisseauChoisi = fregate;
+                break;
+            case CROISEUR:
+                vaisseauChoisi = croiseur;
+                break;
+            case CARGO:
+                vaisseauChoisi = cargo;
+                break;
+            case VAISSEAUMONDE:
+            default:
+                vaisseauChoisi = vaisseauMonde;
+        }
+
+        System.out.println("Sur quelle planète voulez-vous vous rendre ?");
+        String nomDePlaneteChoisie = scanner.nextLine();
+        PlaneteTellurique planeteChoisie;
+        switch (nomDePlaneteChoisie) {
+            case "Mercure":
+                planeteChoisie = mercure;
+                break;
+            case "Venus":
+                planeteChoisie = venus;
+                break;
+            case "Terre":
+                planeteChoisie = terre;
+                break;
+            case "Mars":
+            default:
+                planeteChoisie = mars;
+        }
+        planeteChoisie.accueillirVaisseau(vaisseauChoisi);
+
+        System.out.println("Quel tonnage de livraison souhaitez-vous embarquer ?");
+        int tonnageChoisi = scanner.nextInt();
+
+        int tonnageRejete = vaisseauChoisi.emporterCargaison(tonnageChoisi);
+        System.out.printf("Le tonnage rejeté est %d.\n", tonnageRejete);
     }
 }
