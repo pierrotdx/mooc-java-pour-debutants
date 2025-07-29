@@ -27,26 +27,31 @@ public class HelloUniverse {
         PlaneteGazeuse neptune = new PlaneteGazeuse("Neptune");
         neptune.diametre = 49532;
 
+        int quantiteRefusee;
 
-        Vaisseau chasseur = new VaisseauDeGuerre();
-        chasseur.type = "CHASSEUR";
-        chasseur.blindage = 156;
-        chasseur.resistanceDuBouclier = 2;
-        chasseur.activerBouclier();
+       VaisseauDeGuerre chasseur = new VaisseauDeGuerre("CHASSEUR");
+       terre.accueillirVaisseau(chasseur);
+       quantiteRefusee = chasseur.emporterCargaison(20);
+        System.out.printf("La quantité refusée est de %d.\n", quantiteRefusee);
 
-        Vaisseau vaisseauMonde = new VaisseauCivil();
-        vaisseauMonde.type = "VAISSEAU-MONDE";
-        vaisseauMonde.blindage = 4784;
-        vaisseauMonde.resistanceDuBouclier = 30;
-        vaisseauMonde.activerBouclier();
+       VaisseauDeGuerre fregate = new VaisseauDeGuerre("FREGATE");
+       fregate.nbPassagers = 100;
+       terre.accueillirVaisseau(fregate);
+       quantiteRefusee = fregate.emporterCargaison(45);
+       System.out.printf("La quantité refusée est de %d.\n", quantiteRefusee);
+       quantiteRefusee = fregate.emporterCargaison(12);
+       System.out.printf("La quantité refusée est de %d.\n", quantiteRefusee);
 
-        ((VaisseauDeGuerre)chasseur).attaque(vaisseauMonde, "laser photonique", 3);
-        vaisseauMonde.desactiverBouclier();
-        System.out.printf("La durée de protection résiduelle du bouclier du Vaisseau-Monde est de %d minutes.\n", vaisseauMonde.resistanceDuBouclier);
-        System.out.printf("La valeur du blindage du Vaisseau-Monde est de %d.\n", vaisseauMonde.blindage);
+       VaisseauDeGuerre fregate2 = new VaisseauDeGuerre("FREGATE");
+       fregate2.nbPassagers = 14;
+       quantiteRefusee = fregate2.emporterCargaison(30);
+       System.out.printf("La quantité refusée est de %d.\n", quantiteRefusee);
 
-        mars.accueillirVaisseau(vaisseauMonde);
-        mars.accueillirVaisseau(chasseur);
-
+       VaisseauCivil vaisseauMonde = new VaisseauCivil("VAISSEAU-MONDE");
+       terre.accueillirVaisseau(vaisseauMonde);
+        quantiteRefusee = vaisseauMonde.emporterCargaison(1560);
+        System.out.printf("La quantité refusée est de %d.\n", quantiteRefusee);
+        quantiteRefusee = vaisseauMonde.emporterCargaison(600);
+        System.out.printf("La quantité refusée est de %d.\n", quantiteRefusee);
     }
 }

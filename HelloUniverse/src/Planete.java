@@ -1,4 +1,4 @@
-public class Planete {
+public abstract class Planete {
     static String forme = "Sphérique";
     static int nbPlanetesDecouvertes;
 
