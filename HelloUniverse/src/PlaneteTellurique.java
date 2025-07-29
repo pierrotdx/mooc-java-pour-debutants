@@ -17,6 +17,10 @@ public class PlaneteTellurique extends Planete implements  Habitable {
         }
         this.vaisseauAccoste = vaisseau;
 
+        if (vaisseau instanceof VaisseauDeGuerre) {
+            ((VaisseauDeGuerre) vaisseau).desactiverArmes();
+        }
+
         this.totalVisiteurs += vaisseau.nbPassagers;
         System.out.printf("Le nombre d'humains ayant déjà séjourné sur %s est actuellement de %d.\n", this.nom, this.totalVisiteurs);
 
