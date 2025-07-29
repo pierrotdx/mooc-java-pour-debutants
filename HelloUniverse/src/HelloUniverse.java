@@ -28,19 +28,19 @@ public class HelloUniverse {
         neptune.diametre = 49532;
 
 
-        VaisseauDeGuerre chasseur = new VaisseauDeGuerre();
+        Vaisseau chasseur = new VaisseauDeGuerre();
         chasseur.type = "CHASSEUR";
         chasseur.blindage = 156;
         chasseur.resistanceDuBouclier = 2;
         chasseur.activerBouclier();
 
-        VaisseauCivil vaisseauMonde = new VaisseauCivil();
+        Vaisseau vaisseauMonde = new VaisseauCivil();
         vaisseauMonde.type = "VAISSEAU-MONDE";
         vaisseauMonde.blindage = 4784;
         vaisseauMonde.resistanceDuBouclier = 30;
         vaisseauMonde.activerBouclier();
 
-        chasseur.attaque(vaisseauMonde, "laser photonique", 3);
+        ((VaisseauDeGuerre)chasseur).attaque(vaisseauMonde, "laser photonique", 3);
         vaisseauMonde.desactiverBouclier();
         System.out.printf("La durée de protection résiduelle du bouclier du Vaisseau-Monde est de %d minutes.\n", vaisseauMonde.resistanceDuBouclier);
         System.out.printf("La valeur du blindage du Vaisseau-Monde est de %d.\n", vaisseauMonde.blindage);
