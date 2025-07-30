@@ -1,10 +1,11 @@
-public abstract class Planete {
+public abstract class Planete implements Comparable<Planete> {
     static String forme = "Sphérique";
     static int nbPlanetesDecouvertes;
 
     String nom;
     long diametre;
     Atmosphere atmosphere = new Atmosphere();
+    float distanceEtoile;
 
     Planete(String nom) {
         this.nom = nom;
@@ -50,5 +51,15 @@ public abstract class Planete {
         if (this.atmosphere.tauxSodium != null) {
             System.out.printf("A %,.1f%% de sodium\n", this.atmosphere.tauxSodium);
         }
+    }
+
+    @Override
+    public int compareTo(Planete autrePlanete) {
+        if (this.distanceEtoile == autrePlanete.distanceEtoile) {
+            return 0;
+        } else if (this.distanceEtoile > autrePlanete.distanceEtoile) {
+            return 1;
+        }
+        return -1;
     }
 }

@@ -4,22 +4,23 @@ public class HelloUniverse {
     public static void main(String... args) {
         Galaxie systemeSolaire = new Galaxie();
         systemeSolaire.nom = "Système solaire";
-        systemeSolaire.planetes = new HashSet();
+        systemeSolaire.planetes = new TreeSet<Planete>();
 
         PlaneteTellurique mercure = new PlaneteTellurique("Mercure", 0);
         mercure.diametre = 4880;
-        systemeSolaire.planetes.add(mercure);
+        mercure.distanceEtoile = 57.9f;
 
         PlaneteTellurique venus = new PlaneteTellurique("Venus", 2);
         venus.diametre = 12100;
-        systemeSolaire.planetes.add(venus);
+        venus.distanceEtoile = 108.2f;
 
         PlaneteTellurique terre = new PlaneteTellurique("Terre", 19);
         terre.diametre = 12756;
-        systemeSolaire.planetes.add(terre);
+        terre.distanceEtoile = 149.6f;
 
         PlaneteTellurique mars = new PlaneteTellurique("Mars", 2);
         mars.diametre = 6792;
+        mars.distanceEtoile = 227.9f;
         mars.atmosphere.constituants = new HashMap<String, Float>();
         mars.atmosphere.constituants.put("CO2", 95f);
         mars.atmosphere.constituants.put("N2", 3f);
@@ -33,27 +34,38 @@ public class HelloUniverse {
             System.out.printf("%,.3f%% de %s\n", taux, element);
         }
 
-        systemeSolaire.planetes.add(mars);
-
         PlaneteGazeuse jupiter = new PlaneteGazeuse("Jupiter");
         jupiter.diametre = 142984;
-        systemeSolaire.planetes.add(jupiter);
+        jupiter.distanceEtoile = 778.3f;
 
         PlaneteGazeuse saturne = new PlaneteGazeuse("Saturne");
         saturne.diametre = 120536;
-        systemeSolaire.planetes.add(saturne);
+        saturne.distanceEtoile = 1427f;
 
         PlaneteGazeuse uranus = new PlaneteGazeuse("Uranus");
         uranus.diametre = 51118;
+        uranus.distanceEtoile = 2877.38f;
         uranus.atmosphere.tauxHydrogene = new Float(83f);
         uranus.atmosphere.tauxHelium = new Float(15f);
         uranus.atmosphere.tauxMethane = new Float(2.5f);
         uranus.atmosphere.tauxAzote = new Float(0);
-        systemeSolaire.planetes.add(uranus);
 
         PlaneteGazeuse neptune = new PlaneteGazeuse("Neptune");
         neptune.diametre = 49532;
+        neptune.distanceEtoile = 4497.07f;
+
+        systemeSolaire.planetes.add(saturne);
+        systemeSolaire.planetes.add(mars);
+        systemeSolaire.planetes.add(uranus);
         systemeSolaire.planetes.add(neptune);
+        systemeSolaire.planetes.add(jupiter);
+        systemeSolaire.planetes.add(mercure);
+        systemeSolaire.planetes.add(terre);
+        systemeSolaire.planetes.add(venus);
+
+        for (Planete planet : systemeSolaire.planetes) {
+            System.out.println(planet.nom);
+        }
 
         VaisseauDeGuerre chasseur = new VaisseauDeGuerre(TypeVaisseau.CHASSEUR);
         chasseur.nbPassagers = 4;
