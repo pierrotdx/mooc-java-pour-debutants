@@ -1,8 +1,8 @@
 package com.espacex.decouverte.enginsspatiaux;
 
 public abstract class Vaisseau {
+    final public TypeVaisseau type;
     public int nbPassagers;
-    public TypeVaisseau type;
     protected int tonnageActuel;
     int blindage;
     int resistanceDuBouclier;
