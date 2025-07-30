@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 import java.util.Scanner;
 
 public class HelloUniverse {
@@ -29,6 +32,10 @@ public class HelloUniverse {
 
         PlaneteGazeuse neptune = new PlaneteGazeuse("Neptune");
         neptune.diametre = 49532;
+
+        Galaxie systemeSolaire = new Galaxie();
+        systemeSolaire.name = "Système solaire";
+        systemeSolaire.planetes = new ArrayList<Planete>(List.of(mercure, venus, terre, mars, jupiter, saturne, uranus, neptune));
 
         VaisseauDeGuerre chasseur = new VaisseauDeGuerre(TypeVaisseau.CHASSEUR);
         chasseur.nbPassagers = 4;
@@ -75,41 +82,32 @@ public class HelloUniverse {
                     vaisseauChoisi = vaisseauMonde;
             }
 
-            System.out.println("Sur quelle planète voulez-vous vous rendre ?");
-            String nomDePlaneteChoisie = scanner.nextLine();
-            PlaneteTellurique planeteChoisie;
-            switch (nomDePlaneteChoisie) {
-                case "Mercure":
-                    planeteChoisie = mercure;
-                    break;
-                case "Venus":
-                    planeteChoisie = venus;
-                    break;
-                case "Terre":
-                    planeteChoisie = terre;
-                    break;
-                case "Mars":
-                default:
-                    planeteChoisie = mars;
-            }
+            System.out.println("Quel est l'index de la planète sur laquelle vous voulez rendre ?");
+            int indexPlanete = scanner.nextInt();
+            scanner.nextLine();
+            Planete planeteChoisie = systemeSolaire.planetes.get(indexPlanete);
 
-            boolean restePlace = planeteChoisie.restePlaceDisponible(vaisseauChoisi);
-            if (restePlace) {
-                planeteChoisie.accueillirVaisseaux(vaisseauChoisi);
+            if ((planeteChoisie instanceof PlaneteTellurique)) {
+                boolean restePlace = ((PlaneteTellurique) planeteChoisie).restePlaceDisponible(vaisseauChoisi);
+                if (restePlace) {
+                    ((PlaneteTellurique) planeteChoisie).accueillirVaisseaux(vaisseauChoisi);
 
-                System.out.println("Quel tonnage de livraison souhaitez-vous embarquer ?");
-                int tonnageChoisi = scanner.nextInt();
-                scanner.nextLine();
+                    System.out.println("Quel tonnage de livraison souhaitez-vous embarquer ?");
+                    int tonnageChoisi = scanner.nextInt();
+                    scanner.nextLine();
 
-                int tonnageRejete = vaisseauChoisi.emporterCargaison(tonnageChoisi);
-                System.out.printf("Le tonnage rejeté est %d.\n", tonnageRejete);
+                    int tonnageRejete = vaisseauChoisi.emporterCargaison(tonnageChoisi);
+                    System.out.printf("Le tonnage rejeté est %d.\n", tonnageRejete);
+                } else {
+                    System.out.println("Le vaisseau ne peut pas se poser sur la planète par manque de place dans la baie.");
+                }
+
+                System.out.println("Voulez-vous recommencer oui/non ?");
+                String utilisateurVeutRecommencer = scanner.nextLine();
+                recommencer = utilisateurVeutRecommencer.equals("oui");
             } else {
-                System.out.println("Le vaisseau ne peut pas se poser sur la planète par manque de place dans la baie.");
+                System.out.println("Cette planète n'est pas une planète tellurique. Impossible d'y atterrir.");
             }
-
-            System.out.println("Voulez-vous recommencer oui/non ?");
-            String utilisateurVeutRecommencer = scanner.nextLine();
-            recommencer = utilisateurVeutRecommencer.equals("oui");
         }
     }
 }
