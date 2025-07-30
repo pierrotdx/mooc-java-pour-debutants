@@ -1,4 +1,8 @@
-import java.lang.reflect.Type;
+package com.espacex.decouverte.objetsastro;
+
+import com.espacex.decouverte.enginsspatiaux.TypeVaisseau;
+import com.espacex.decouverte.enginsspatiaux.Vaisseau;
+import com.espacex.decouverte.enginsspatiaux.VaisseauDeGuerre;
 
 public class PlaneteTellurique extends Planete implements Habitable {
 
@@ -6,7 +10,7 @@ public class PlaneteTellurique extends Planete implements Habitable {
     int totalVisiteurs;
     Vaisseau[][] vaisseauxAccostes;
 
-    PlaneteTellurique(String nom, int tailleBaieAccostage) {
+    public PlaneteTellurique(String nom, int tailleBaieAccostage) {
         super(nom);
         this.vaisseauxAccostes = new Vaisseau[2][tailleBaieAccostage];
     }
@@ -16,9 +20,9 @@ public class PlaneteTellurique extends Planete implements Habitable {
         for (Vaisseau vaisseau : vaisseaux) {
             Vaisseau[] quaiDAccostage;
             switch (vaisseau.type) {
-                case CHASSEUR:
-                case FREGATE:
-                case CROISEUR:
+                case TypeVaisseau.CHASSEUR:
+                case TypeVaisseau.FREGATE:
+                case TypeVaisseau.CROISEUR:
                     quaiDAccostage = this.vaisseauxAccostes[0];
                 default:
                     quaiDAccostage = this.vaisseauxAccostes[1];
@@ -40,12 +44,12 @@ public class PlaneteTellurique extends Planete implements Habitable {
         System.out.printf("Le nombre d'humains ayant déjà séjourné sur %s est actuellement de %d.\n", this.nom, this.totalVisiteurs);
     }
 
-    boolean restePlaceDisponible(Vaisseau vaisseau) {
+    public boolean restePlaceDisponible(Vaisseau vaisseau) {
         Vaisseau[] quaiDAccostage;
         switch (vaisseau.type) {
-            case CHASSEUR:
-            case FREGATE:
-            case CROISEUR:
+            case TypeVaisseau.CHASSEUR:
+            case TypeVaisseau.FREGATE:
+            case TypeVaisseau.CROISEUR:
                 quaiDAccostage = this.vaisseauxAccostes[0];
             default:
                 quaiDAccostage = this.vaisseauxAccostes[1];

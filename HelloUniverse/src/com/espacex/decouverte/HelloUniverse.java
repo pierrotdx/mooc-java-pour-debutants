@@ -1,3 +1,14 @@
+package com.espacex.decouverte;
+
+import com.espacex.decouverte.enginsspatiaux.TypeVaisseau;
+import com.espacex.decouverte.enginsspatiaux.Vaisseau;
+import com.espacex.decouverte.enginsspatiaux.VaisseauCivil;
+import com.espacex.decouverte.enginsspatiaux.VaisseauDeGuerre;
+import com.espacex.decouverte.objetsastro.Galaxie;
+import com.espacex.decouverte.objetsastro.Planete;
+import com.espacex.decouverte.objetsastro.PlaneteGazeuse;
+import com.espacex.decouverte.objetsastro.PlaneteTellurique;
+
 import java.util.*;
 
 public class HelloUniverse {
@@ -95,19 +106,19 @@ public class HelloUniverse {
             TypeVaisseau typeVaisseau = TypeVaisseau.valueOf(scanner.nextLine());
             Vaisseau vaisseauChoisi;
             switch (typeVaisseau) {
-                case CHASSEUR:
+                case TypeVaisseau.CHASSEUR:
                     vaisseauChoisi = chasseur;
                     break;
-                case FREGATE:
+                case TypeVaisseau.FREGATE:
                     vaisseauChoisi = fregate;
                     break;
-                case CROISEUR:
+                case TypeVaisseau.CROISEUR:
                     vaisseauChoisi = croiseur;
                     break;
-                case CARGO:
+                case TypeVaisseau.CARGO:
                     vaisseauChoisi = cargo;
                     break;
-                case VAISSEAUMONDE:
+                case TypeVaisseau.VAISSEAUMONDE:
                 default:
                     vaisseauChoisi = vaisseauMonde;
             }
