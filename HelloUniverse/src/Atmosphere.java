@@ -1,3 +1,5 @@
+import java.util.Map;
+
 public class Atmosphere {
     Float tauxHelium;
     Float tauxHydrogene;
@@ -6,5 +8,6 @@ public class Atmosphere {
     Float tauxDioxydeDeCarbone;
     Float tauxSodium;
     Float tauxMethane;
+    Map<String, Float> constituants;
 }
 

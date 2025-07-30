@@ -1,6 +1,6 @@
 import java.util.Set;
 
 public class Galaxie {
-    String name;
+    String nom;
     Set<Planete> planetes;
 }

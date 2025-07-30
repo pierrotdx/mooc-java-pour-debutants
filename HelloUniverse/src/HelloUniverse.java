@@ -3,7 +3,7 @@ import java.util.*;
 public class HelloUniverse {
     public static void main(String... args) {
         Galaxie systemeSolaire = new Galaxie();
-        systemeSolaire.name = "Système solaire";
+        systemeSolaire.nom = "Système solaire";
         systemeSolaire.planetes = new HashSet();
 
         PlaneteTellurique mercure = new PlaneteTellurique("Mercure", 0);
@@ -20,6 +20,19 @@ public class HelloUniverse {
 
         PlaneteTellurique mars = new PlaneteTellurique("Mars", 2);
         mars.diametre = 6792;
+        mars.atmosphere.constituants = new HashMap<String, Float>();
+        mars.atmosphere.constituants.put("CO2", 95f);
+        mars.atmosphere.constituants.put("N2", 3f);
+        mars.atmosphere.constituants.put("AR", 1.5f);
+        mars.atmosphere.constituants.put("NO", 0.013f);
+
+        System.out.println("L'atmosphère de Mars est constituée de :");
+        for (Map.Entry<String, Float> entry : mars.atmosphere.constituants.entrySet()) {
+            String element = entry.getKey();
+            Float taux = entry.getValue();
+            System.out.printf("%,.3f%% de %s\n", taux, element);
+        }
+
         systemeSolaire.planetes.add(mars);
 
         PlaneteGazeuse jupiter = new PlaneteGazeuse("Jupiter");
