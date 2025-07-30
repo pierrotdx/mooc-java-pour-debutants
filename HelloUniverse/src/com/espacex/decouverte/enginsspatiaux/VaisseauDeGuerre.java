@@ -1,7 +1,7 @@
 package com.espacex.decouverte.enginsspatiaux;
 
 public class VaisseauDeGuerre extends Vaisseau {
-    boolean armesDesactivees;
+    private boolean armesDesactivees;
 
     public VaisseauDeGuerre(TypeVaisseau type) {
         super(type);
@@ -19,6 +19,11 @@ public class VaisseauDeGuerre extends Vaisseau {
     public void desactiverArmes() {
         this.armesDesactivees = true;
         System.out.printf("Désactivation des armes d'un vaisseau de type %s.\n", this.type);
+    }
+
+    public void activerArmes() {
+        this.armesDesactivees = false;
+        System.out.printf("Activation des armes d'un vaisseau de type %s.\n", this.type);
     }
 
     @Override

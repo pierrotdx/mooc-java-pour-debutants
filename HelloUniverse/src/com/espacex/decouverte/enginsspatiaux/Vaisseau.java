@@ -3,11 +3,10 @@ package com.espacex.decouverte.enginsspatiaux;
 public abstract class Vaisseau {
     public int nbPassagers;
     public TypeVaisseau type;
+    protected int tonnageActuel;
     int blindage;
     int resistanceDuBouclier;
     int tonnageMax;
-    int tonnageActuel;
-
 
     public Vaisseau(TypeVaisseau type) {
         this.type = type;
