@@ -1,21 +1,23 @@
-public class PlaneteTellurique extends Planete implements  Habitable {
+public class PlaneteTellurique extends Planete implements Habitable {
 
     Vaisseau vaisseauAccoste;
     int totalVisiteurs;
+    Vaisseau[] vaisseauxAccostes;
 
-    PlaneteTellurique(String nom) {
+    PlaneteTellurique(String nom, int tailleBaieAccostage) {
         super(nom);
+        this.vaisseauxAccostes = new Vaisseau[tailleBaieAccostage];
     }
 
     @Override
-    public Vaisseau accueillirVaisseau(Vaisseau vaisseau) {
-        Vaisseau vaisseauEnPartance = this.vaisseauAccoste;
-        if (vaisseauEnPartance == null) {
-            System.out.println("Aucun vaisseau ne s'en va.");
-        } else {
-            System.out.printf("Un vaisseau de type %s doit s'en aller.\n", vaisseauEnPartance.type);
+    public void accueillirVaisseau(Vaisseau vaisseau) {
+        for (int placeIndex = 0; placeIndex < this.vaisseauxAccostes.length; placeIndex++) {
+            Vaisseau vaisseauACettePlace = this.vaisseauxAccostes[placeIndex];
+            if (vaisseauACettePlace == null) {
+                this.vaisseauxAccostes[placeIndex] = vaisseau;
+                break;
+            }
         }
-        this.vaisseauAccoste = vaisseau;
 
         if (vaisseau instanceof VaisseauDeGuerre) {
             ((VaisseauDeGuerre) vaisseau).desactiverArmes();
@@ -23,7 +25,18 @@ public class PlaneteTellurique extends Planete implements  Habitable {
 
         this.totalVisiteurs += vaisseau.nbPassagers;
         System.out.printf("Le nombre d'humains ayant déjà séjourné sur %s est actuellement de %d.\n", this.nom, this.totalVisiteurs);
+    }
 
-        return vaisseauEnPartance;
+    boolean restePlaceDisponible() {
+        boolean restePlace = false;
+        for (int placeIndex = 0; placeIndex < this.vaisseauxAccostes.length; placeIndex++) {
+            Vaisseau vaisseauACettePlace = this.vaisseauxAccostes[placeIndex];
+            if (vaisseauACettePlace == null) {
+                System.out.println("Il reste de la place dans la baie.");
+                restePlace = true;
+                break;
+            }
+        }
+        return restePlace;
     }
 }

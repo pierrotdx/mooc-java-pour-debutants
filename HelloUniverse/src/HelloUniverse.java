@@ -2,16 +2,16 @@ import java.util.Scanner;
 
 public class HelloUniverse {
     public static void main(String... args) {
-        PlaneteTellurique mercure = new PlaneteTellurique("Mercure");
+        PlaneteTellurique mercure = new PlaneteTellurique("Mercure", 0);
         mercure.diametre = 4880;
 
-        PlaneteTellurique venus = new PlaneteTellurique("Venus");
+        PlaneteTellurique venus = new PlaneteTellurique("Venus", 2);
         venus.diametre = 12100;
 
-        PlaneteTellurique terre = new PlaneteTellurique("Terre");
+        PlaneteTellurique terre = new PlaneteTellurique("Terre", 19);
         terre.diametre = 12756;
 
-        PlaneteTellurique mars = new PlaneteTellurique("Mars");
+        PlaneteTellurique mars = new PlaneteTellurique("Mars", 2);
         mars.diametre = 6792;
 
         PlaneteGazeuse jupiter = new PlaneteGazeuse("Jupiter");
@@ -85,12 +85,26 @@ public class HelloUniverse {
             default:
                 planeteChoisie = mars;
         }
-        planeteChoisie.accueillirVaisseau(vaisseauChoisi);
 
-        System.out.println("Quel tonnage de livraison souhaitez-vous embarquer ?");
-        int tonnageChoisi = scanner.nextInt();
+        boolean recommencer = true;
+        while (recommencer) {
+            boolean restePlace = planeteChoisie.restePlaceDisponible();
+            if (restePlace) {
+                planeteChoisie.accueillirVaisseau(vaisseauChoisi);
 
-        int tonnageRejete = vaisseauChoisi.emporterCargaison(tonnageChoisi);
-        System.out.printf("Le tonnage rejeté est %d.\n", tonnageRejete);
+                System.out.println("Quel tonnage de livraison souhaitez-vous embarquer ?");
+                int tonnageChoisi = scanner.nextInt();
+                scanner.nextLine();
+
+                int tonnageRejete = vaisseauChoisi.emporterCargaison(tonnageChoisi);
+                System.out.printf("Le tonnage rejeté est %d.\n", tonnageRejete);
+            } else {
+                System.out.println("Le vaisseau ne peut pas se poser sur la planète par manque de place dans la baie.");
+            }
+
+            System.out.println("Voulez-vous recommencer oui/non ?");
+            String utilisateurVeutRecommencer = scanner.nextLine();
+            recommencer = utilisateurVeutRecommencer.equals("oui");
+        }
     }
 }
