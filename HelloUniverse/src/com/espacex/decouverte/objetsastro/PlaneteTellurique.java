@@ -1,8 +1,9 @@
 package com.espacex.decouverte.objetsastro;
 
-import com.espacex.decouverte.enginsspatiaux.TypeVaisseau;
 import com.espacex.decouverte.enginsspatiaux.Vaisseau;
 import com.espacex.decouverte.enginsspatiaux.VaisseauDeGuerre;
+
+import static com.espacex.decouverte.enginsspatiaux.TypeVaisseau.*;
 
 public class PlaneteTellurique extends Planete implements Habitable {
 
@@ -20,9 +21,9 @@ public class PlaneteTellurique extends Planete implements Habitable {
         for (Vaisseau vaisseau : vaisseaux) {
             Vaisseau[] quaiDAccostage;
             switch (vaisseau.type) {
-                case TypeVaisseau.CHASSEUR:
-                case TypeVaisseau.FREGATE:
-                case TypeVaisseau.CROISEUR:
+                case CHASSEUR:
+                case FREGATE:
+                case CROISEUR:
                     quaiDAccostage = this.vaisseauxAccostes[0];
                 default:
                     quaiDAccostage = this.vaisseauxAccostes[1];
@@ -47,9 +48,9 @@ public class PlaneteTellurique extends Planete implements Habitable {
     public boolean restePlaceDisponible(Vaisseau vaisseau) {
         Vaisseau[] quaiDAccostage;
         switch (vaisseau.type) {
-            case TypeVaisseau.CHASSEUR:
-            case TypeVaisseau.FREGATE:
-            case TypeVaisseau.CROISEUR:
+            case CHASSEUR:
+            case FREGATE:
+            case CROISEUR:
                 quaiDAccostage = this.vaisseauxAccostes[0];
             default:
                 quaiDAccostage = this.vaisseauxAccostes[1];

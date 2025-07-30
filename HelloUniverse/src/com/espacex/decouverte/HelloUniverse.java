@@ -9,6 +9,8 @@ import com.espacex.decouverte.objetsastro.Planete;
 import com.espacex.decouverte.objetsastro.PlaneteGazeuse;
 import com.espacex.decouverte.objetsastro.PlaneteTellurique;
 
+import static com.espacex.decouverte.enginsspatiaux.TypeVaisseau.*;
+
 import java.util.*;
 
 public class HelloUniverse {
@@ -78,47 +80,47 @@ public class HelloUniverse {
             System.out.println(planet.nom);
         }
 
-        VaisseauDeGuerre chasseur = new VaisseauDeGuerre(TypeVaisseau.CHASSEUR);
+        VaisseauDeGuerre chasseur = new VaisseauDeGuerre(CHASSEUR);
         chasseur.nbPassagers = 4;
 
-        VaisseauDeGuerre fregate = new VaisseauDeGuerre(TypeVaisseau.FREGATE);
+        VaisseauDeGuerre fregate = new VaisseauDeGuerre(FREGATE);
         fregate.nbPassagers = 9;
 
-        VaisseauDeGuerre croiseur = new VaisseauDeGuerre(TypeVaisseau.CROISEUR);
+        VaisseauDeGuerre croiseur = new VaisseauDeGuerre(CROISEUR);
         croiseur.nbPassagers = 284;
 
-        VaisseauCivil cargo = new VaisseauCivil(TypeVaisseau.CARGO);
+        VaisseauCivil cargo = new VaisseauCivil(CARGO);
         cargo.nbPassagers = 938;
 
-        VaisseauCivil vaisseauMonde = new VaisseauCivil(TypeVaisseau.VAISSEAUMONDE);
+        VaisseauCivil vaisseauMonde = new VaisseauCivil(VAISSEAUMONDE);
         vaisseauMonde.nbPassagers = 1;
 
         Scanner scanner = new Scanner(System.in);
 
-        VaisseauDeGuerre chasseur1 = new VaisseauDeGuerre(TypeVaisseau.CHASSEUR);
-        VaisseauDeGuerre chasseur2 = new VaisseauDeGuerre(TypeVaisseau.CHASSEUR);
+        VaisseauDeGuerre chasseur1 = new VaisseauDeGuerre(CHASSEUR);
+        VaisseauDeGuerre chasseur2 = new VaisseauDeGuerre(CHASSEUR);
 
         terre.accueillirVaisseaux(chasseur1, chasseur2, cargo);
 
         boolean recommencer = true;
         while (recommencer) {
             System.out.println("Quel type de vaisseau voulez-vous manipuler ?");
-            TypeVaisseau typeVaisseau = TypeVaisseau.valueOf(scanner.nextLine());
+            TypeVaisseau typeVaisseau = valueOf(scanner.nextLine());
             Vaisseau vaisseauChoisi;
             switch (typeVaisseau) {
-                case TypeVaisseau.CHASSEUR:
+                case CHASSEUR:
                     vaisseauChoisi = chasseur;
                     break;
-                case TypeVaisseau.FREGATE:
+                case FREGATE:
                     vaisseauChoisi = fregate;
                     break;
-                case TypeVaisseau.CROISEUR:
+                case CROISEUR:
                     vaisseauChoisi = croiseur;
                     break;
-                case TypeVaisseau.CARGO:
+                case CARGO:
                     vaisseauChoisi = cargo;
                     break;
-                case TypeVaisseau.VAISSEAUMONDE:
+                case VAISSEAUMONDE:
                 default:
                     vaisseauChoisi = vaisseauMonde;
             }
