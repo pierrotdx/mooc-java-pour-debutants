@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class PlaneteTellurique extends Planete implements Habitable {
 
     Vaisseau vaisseauAccoste;
@@ -10,20 +12,21 @@ public class PlaneteTellurique extends Planete implements Habitable {
     }
 
     @Override
-    public void accueillirVaisseau(Vaisseau vaisseau) {
-        for (int placeIndex = 0; placeIndex < this.vaisseauxAccostes.length; placeIndex++) {
-            Vaisseau vaisseauACettePlace = this.vaisseauxAccostes[placeIndex];
-            if (vaisseauACettePlace == null) {
-                this.vaisseauxAccostes[placeIndex] = vaisseau;
-                break;
+    public void accueillirVaisseaux(Vaisseau... vaisseaux) {
+        for (Vaisseau vaisseau : vaisseaux) {
+            for (int placeIndex = 0; placeIndex < this.vaisseauxAccostes.length; placeIndex++) {
+                Vaisseau vaisseauACettePlace = this.vaisseauxAccostes[placeIndex];
+                if (vaisseauACettePlace == null) {
+                    this.vaisseauxAccostes[placeIndex] = vaisseau;
+                    if (vaisseau instanceof VaisseauDeGuerre) {
+                        ((VaisseauDeGuerre) vaisseau).desactiverArmes();
+                    }
+                    this.totalVisiteurs += vaisseau.nbPassagers;
+                    break;
+                }
             }
         }
 
-        if (vaisseau instanceof VaisseauDeGuerre) {
-            ((VaisseauDeGuerre) vaisseau).desactiverArmes();
-        }
-
-        this.totalVisiteurs += vaisseau.nbPassagers;
         System.out.printf("Le nombre d'humains ayant déjà séjourné sur %s est actuellement de %d.\n", this.nom, this.totalVisiteurs);
     }
 

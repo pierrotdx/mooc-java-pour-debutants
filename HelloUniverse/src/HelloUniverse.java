@@ -86,11 +86,16 @@ public class HelloUniverse {
                 planeteChoisie = mars;
         }
 
+        VaisseauDeGuerre chasseur1 = new VaisseauDeGuerre(TypeVaisseau.CHASSEUR);
+        VaisseauDeGuerre chasseur2 = new VaisseauDeGuerre(TypeVaisseau.CHASSEUR);
+
+        terre.accueillirVaisseaux(chasseur1, chasseur2, cargo);
+
         boolean recommencer = true;
         while (recommencer) {
             boolean restePlace = planeteChoisie.restePlaceDisponible();
             if (restePlace) {
-                planeteChoisie.accueillirVaisseau(vaisseauChoisi);
+                planeteChoisie.accueillirVaisseaux(vaisseauChoisi);
 
                 System.out.println("Quel tonnage de livraison souhaitez-vous embarquer ?");
                 int tonnageChoisi = scanner.nextInt();
