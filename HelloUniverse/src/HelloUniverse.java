@@ -1,27 +1,34 @@
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class HelloUniverse {
     public static void main(String... args) {
+        Galaxie systemeSolaire = new Galaxie();
+        systemeSolaire.name = "Système solaire";
+        systemeSolaire.planetes = new HashSet();
+
         PlaneteTellurique mercure = new PlaneteTellurique("Mercure", 0);
         mercure.diametre = 4880;
+        systemeSolaire.planetes.add(mercure);
 
         PlaneteTellurique venus = new PlaneteTellurique("Venus", 2);
         venus.diametre = 12100;
+        systemeSolaire.planetes.add(venus);
 
         PlaneteTellurique terre = new PlaneteTellurique("Terre", 19);
         terre.diametre = 12756;
+        systemeSolaire.planetes.add(terre);
 
         PlaneteTellurique mars = new PlaneteTellurique("Mars", 2);
         mars.diametre = 6792;
+        systemeSolaire.planetes.add(mars);
 
         PlaneteGazeuse jupiter = new PlaneteGazeuse("Jupiter");
         jupiter.diametre = 142984;
+        systemeSolaire.planetes.add(jupiter);
 
         PlaneteGazeuse saturne = new PlaneteGazeuse("Saturne");
         saturne.diametre = 120536;
+        systemeSolaire.planetes.add(saturne);
 
         PlaneteGazeuse uranus = new PlaneteGazeuse("Uranus");
         uranus.diametre = 51118;
@@ -29,13 +36,11 @@ public class HelloUniverse {
         uranus.atmosphere.tauxHelium = new Float(15f);
         uranus.atmosphere.tauxMethane = new Float(2.5f);
         uranus.atmosphere.tauxAzote = new Float(0);
+        systemeSolaire.planetes.add(uranus);
 
         PlaneteGazeuse neptune = new PlaneteGazeuse("Neptune");
         neptune.diametre = 49532;
-
-        Galaxie systemeSolaire = new Galaxie();
-        systemeSolaire.name = "Système solaire";
-        systemeSolaire.planetes = new ArrayList<Planete>(List.of(mercure, venus, terre, mars, jupiter, saturne, uranus, neptune));
+        systemeSolaire.planetes.add(neptune);
 
         VaisseauDeGuerre chasseur = new VaisseauDeGuerre(TypeVaisseau.CHASSEUR);
         chasseur.nbPassagers = 4;
@@ -82,10 +87,17 @@ public class HelloUniverse {
                     vaisseauChoisi = vaisseauMonde;
             }
 
-            System.out.println("Quel est l'index de la planète sur laquelle vous voulez rendre ?");
-            int indexPlanete = scanner.nextInt();
-            scanner.nextLine();
-            Planete planeteChoisie = systemeSolaire.planetes.get(indexPlanete);
+            System.out.println("Quel est le nom de la planète sur laquelle vous voulez rendre ?");
+            String nomPlanete = scanner.nextLine();
+            Planete planeteChoisie = terre;
+            Iterator<Planete> planeteIterator = systemeSolaire.planetes.iterator();
+            // ou utiliser un for
+            while (planeteIterator.hasNext()) {
+                Planete planete = planeteIterator.next();
+                if (planete.nom.equals(nomPlanete)) {
+                    planeteChoisie = planete;
+                }
+            }
 
             if ((planeteChoisie instanceof PlaneteTellurique)) {
                 boolean restePlace = ((PlaneteTellurique) planeteChoisie).restePlaceDisponible(vaisseauChoisi);
