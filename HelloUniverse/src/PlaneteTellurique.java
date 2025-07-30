@@ -1,23 +1,33 @@
-import java.util.Arrays;
+import java.lang.reflect.Type;
 
 public class PlaneteTellurique extends Planete implements Habitable {
 
     Vaisseau vaisseauAccoste;
     int totalVisiteurs;
-    Vaisseau[] vaisseauxAccostes;
+    Vaisseau[][] vaisseauxAccostes;
 
     PlaneteTellurique(String nom, int tailleBaieAccostage) {
         super(nom);
-        this.vaisseauxAccostes = new Vaisseau[tailleBaieAccostage];
+        this.vaisseauxAccostes = new Vaisseau[2][tailleBaieAccostage];
     }
 
     @Override
     public void accueillirVaisseaux(Vaisseau... vaisseaux) {
         for (Vaisseau vaisseau : vaisseaux) {
-            for (int placeIndex = 0; placeIndex < this.vaisseauxAccostes.length; placeIndex++) {
-                Vaisseau vaisseauACettePlace = this.vaisseauxAccostes[placeIndex];
+            Vaisseau[] quaiDAccostage;
+            switch (vaisseau.type) {
+                case CHASSEUR:
+                case FREGATE:
+                case CROISEUR:
+                    quaiDAccostage = this.vaisseauxAccostes[0];
+                default:
+                    quaiDAccostage = this.vaisseauxAccostes[1];
+            }
+            ;
+            for (int placeIndex = 0; placeIndex < quaiDAccostage.length; placeIndex++) {
+                Vaisseau vaisseauACettePlace = quaiDAccostage[placeIndex];
                 if (vaisseauACettePlace == null) {
-                    this.vaisseauxAccostes[placeIndex] = vaisseau;
+                    quaiDAccostage[placeIndex] = vaisseau;
                     if (vaisseau instanceof VaisseauDeGuerre) {
                         ((VaisseauDeGuerre) vaisseau).desactiverArmes();
                     }
@@ -30,10 +40,20 @@ public class PlaneteTellurique extends Planete implements Habitable {
         System.out.printf("Le nombre d'humains ayant déjà séjourné sur %s est actuellement de %d.\n", this.nom, this.totalVisiteurs);
     }
 
-    boolean restePlaceDisponible() {
+    boolean restePlaceDisponible(Vaisseau vaisseau) {
+        Vaisseau[] quaiDAccostage;
+        switch (vaisseau.type) {
+            case CHASSEUR:
+            case FREGATE:
+            case CROISEUR:
+                quaiDAccostage = this.vaisseauxAccostes[0];
+            default:
+                quaiDAccostage = this.vaisseauxAccostes[1];
+        }
+
         boolean restePlace = false;
-        for (int placeIndex = 0; placeIndex < this.vaisseauxAccostes.length; placeIndex++) {
-            Vaisseau vaisseauACettePlace = this.vaisseauxAccostes[placeIndex];
+        for (int placeIndex = 0; placeIndex < quaiDAccostage.length; placeIndex++) {
+            Vaisseau vaisseauACettePlace = quaiDAccostage[placeIndex];
             if (vaisseauACettePlace == null) {
                 System.out.println("Il reste de la place dans la baie.");
                 restePlace = true;

@@ -47,45 +47,6 @@ public class HelloUniverse {
 
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Quel type de vaisseau voulez-vous manipuler ?");
-        TypeVaisseau typeVaisseau = TypeVaisseau.valueOf(scanner.nextLine());
-        Vaisseau vaisseauChoisi;
-        switch (typeVaisseau) {
-            case CHASSEUR:
-                vaisseauChoisi = chasseur;
-                break;
-            case FREGATE:
-                vaisseauChoisi = fregate;
-                break;
-            case CROISEUR:
-                vaisseauChoisi = croiseur;
-                break;
-            case CARGO:
-                vaisseauChoisi = cargo;
-                break;
-            case VAISSEAUMONDE:
-            default:
-                vaisseauChoisi = vaisseauMonde;
-        }
-
-        System.out.println("Sur quelle planète voulez-vous vous rendre ?");
-        String nomDePlaneteChoisie = scanner.nextLine();
-        PlaneteTellurique planeteChoisie;
-        switch (nomDePlaneteChoisie) {
-            case "Mercure":
-                planeteChoisie = mercure;
-                break;
-            case "Venus":
-                planeteChoisie = venus;
-                break;
-            case "Terre":
-                planeteChoisie = terre;
-                break;
-            case "Mars":
-            default:
-                planeteChoisie = mars;
-        }
-
         VaisseauDeGuerre chasseur1 = new VaisseauDeGuerre(TypeVaisseau.CHASSEUR);
         VaisseauDeGuerre chasseur2 = new VaisseauDeGuerre(TypeVaisseau.CHASSEUR);
 
@@ -93,7 +54,46 @@ public class HelloUniverse {
 
         boolean recommencer = true;
         while (recommencer) {
-            boolean restePlace = planeteChoisie.restePlaceDisponible();
+            System.out.println("Quel type de vaisseau voulez-vous manipuler ?");
+            TypeVaisseau typeVaisseau = TypeVaisseau.valueOf(scanner.nextLine());
+            Vaisseau vaisseauChoisi;
+            switch (typeVaisseau) {
+                case CHASSEUR:
+                    vaisseauChoisi = chasseur;
+                    break;
+                case FREGATE:
+                    vaisseauChoisi = fregate;
+                    break;
+                case CROISEUR:
+                    vaisseauChoisi = croiseur;
+                    break;
+                case CARGO:
+                    vaisseauChoisi = cargo;
+                    break;
+                case VAISSEAUMONDE:
+                default:
+                    vaisseauChoisi = vaisseauMonde;
+            }
+
+            System.out.println("Sur quelle planète voulez-vous vous rendre ?");
+            String nomDePlaneteChoisie = scanner.nextLine();
+            PlaneteTellurique planeteChoisie;
+            switch (nomDePlaneteChoisie) {
+                case "Mercure":
+                    planeteChoisie = mercure;
+                    break;
+                case "Venus":
+                    planeteChoisie = venus;
+                    break;
+                case "Terre":
+                    planeteChoisie = terre;
+                    break;
+                case "Mars":
+                default:
+                    planeteChoisie = mars;
+            }
+
+            boolean restePlace = planeteChoisie.restePlaceDisponible(vaisseauChoisi);
             if (restePlace) {
                 planeteChoisie.accueillirVaisseaux(vaisseauChoisi);
 
