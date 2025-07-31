@@ -1,9 +1,6 @@
 package com.espacex.decouverte;
 
-import com.espacex.decouverte.enginsspatiaux.TypeVaisseau;
-import com.espacex.decouverte.enginsspatiaux.Vaisseau;
-import com.espacex.decouverte.enginsspatiaux.VaisseauCivil;
-import com.espacex.decouverte.enginsspatiaux.VaisseauDeGuerre;
+import com.espacex.decouverte.enginsspatiaux.*;
 import com.espacex.decouverte.objetsastro.Galaxie;
 import com.espacex.decouverte.objetsastro.Planete;
 import com.espacex.decouverte.objetsastro.PlaneteGazeuse;
@@ -145,9 +142,24 @@ public class HelloUniverse {
                     System.out.println("Quel tonnage de livraison souhaitez-vous embarquer ?");
                     int tonnageChoisi = scanner.nextInt();
                     scanner.nextLine();
+                    boolean aFiniDeChoisirTonnage = false;
+                    while (!aFiniDeChoisirTonnage) {
 
-                    int tonnageRejete = vaisseauChoisi.emporterCargaison(tonnageChoisi);
-                    System.out.printf("Le tonnage rejeté est %d.\n", tonnageRejete);
+                        try {
+                            vaisseauChoisi.emporterCargaison(tonnageChoisi);
+                            System.out.printf("La cargaison de %d tonnes a été emportée avec succès par votre vaisseau de type %s.\n", tonnageChoisi, vaisseauChoisi.type);
+                            aFiniDeChoisirTonnage = true;
+                        } catch (DepassementTonnageException ex) {
+                            System.out.println(ex.getMessage());
+                            System.out.println("Souhaitez-vous emporter une cargaison partielle oui/non ?");
+                            String decision = scanner.nextLine();
+                            if (decision.equals("non")) {
+                                aFiniDeChoisirTonnage = true;
+                            } else {
+                                tonnageChoisi = tonnageChoisi - ex.tonnageEnExces;
+                            }
+                        }
+                    }
                 } else {
                     System.out.println("Le vaisseau ne peut pas se poser sur la planète par manque de place dans la baie.");
                 }

@@ -6,10 +6,12 @@ public class VaisseauCivil extends Vaisseau {
     }
 
     @Override
-    public int emporterCargaison(int tonnage) {
+    public void emporterCargaison(int tonnage) throws DepassementTonnageException {
         int tonnageTotal = tonnage + this.tonnageActuel;
+        int exces = tonnageTotal - this.tonnageMax;
+        if (exces > 0) {
+            throw new DepassementTonnageException(exces);
+        }
         this.tonnageActuel = Math.min(tonnageTotal, this.tonnageMax);
-        int quantiteRejetee = tonnageTotal <= this.tonnageMax ? 0 : tonnageTotal - this.tonnageMax;
-        return quantiteRejetee;
     }
 }

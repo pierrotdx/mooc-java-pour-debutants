@@ -4,9 +4,9 @@ public abstract class Vaisseau {
     final public TypeVaisseau type;
     public int nbPassagers;
     protected int tonnageActuel;
+    int tonnageMax;
     int blindage;
     int resistanceDuBouclier;
-    int tonnageMax;
 
     public Vaisseau(TypeVaisseau type) {
         this.type = type;
@@ -37,5 +37,5 @@ public abstract class Vaisseau {
         System.out.printf("Désactivation du bouclier d'un vaisseau de type %s\n", this.type);
     }
 
-    public abstract int emporterCargaison(int tonnage);
+    public abstract void emporterCargaison(int tonnage) throws DepassementTonnageException;
 }

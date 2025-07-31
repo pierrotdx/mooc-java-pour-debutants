@@ -33,14 +33,16 @@ public class VaisseauDeGuerre extends Vaisseau {
     }
 
     @Override
-    public int emporterCargaison(int tonnage) {
-        if (this.nbPassagers < 12 || this.tonnageActuel > this.tonnageMax || this.type.equals("CHASSEUR")) {
-            return tonnage;
-        }
+    public void emporterCargaison(int tonnage) throws DepassementTonnageException {
         int tonnageMaxEffectif = Math.min(2 * this.nbPassagers, this.tonnageMax);
         int tonnageTotal = this.tonnageActuel + tonnage;
+        int exces = tonnageTotal - tonnageMaxEffectif;
+        if (exces > 0 || this.type.equals(TypeVaisseau.CHASSEUR)) {
+            throw new DepassementTonnageException(exces);
+        }
+        if (this.nbPassagers < 12) {
+            return;
+        }
         this.tonnageActuel = Math.min(tonnageTotal, tonnageMaxEffectif);
-        int quantiteRejetee = Math.max(0, tonnageTotal - tonnageMaxEffectif);
-        return quantiteRejetee;
     }
 }
