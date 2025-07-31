@@ -139,9 +139,19 @@ public class HelloUniverse {
                 if (restePlace) {
                     ((PlaneteTellurique) planeteChoisie).accueillirVaisseaux(vaisseauChoisi);
 
-                    System.out.println("Quel tonnage de livraison souhaitez-vous embarquer ?");
-                    int tonnageChoisi = scanner.nextInt();
-                    scanner.nextLine();
+                    boolean tonnageChoisiEstValide = false;
+                    int tonnageChoisi = 0;
+                    while (!tonnageChoisiEstValide) {
+                        try {
+                            System.out.println("Quel tonnage de livraison souhaitez-vous embarquer ?");
+                            tonnageChoisi = scanner.nextInt();
+                            tonnageChoisiEstValide = true;
+                        } catch (InputMismatchException ex) {
+                            System.out.println("La valeur entrée n'est pas valide. Veuillez réessayer.");
+                        } finally {
+                            scanner.nextLine();
+                        }
+                    }
                     boolean aFiniDeChoisirTonnage = false;
                     while (!aFiniDeChoisirTonnage) {
 
